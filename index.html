@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BtoBet-Task-1</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <section class="signIn-page" id="signIn">
+      <form action="#" id="loginPageForm">
+        <div>
+          <input
+            type="text"
+            name="username"
+            id="loginPageUsername"
+            placeholder="What's Your Username?"
+            required
+          />
+          <label for="username">Username</label>
+          <p class="errorUsername">Your username is not correct</p>
+        </div>
+        <div>
+          <input
+            type="password"
+            name="passwordLoginPage"
+            id="loginPagePassword"
+            placeholder="Type Your Password Here"
+            required
+          />
+          <label for="passwordLoginPage">Password</label>
+          <p class="errorPassword">Your password is not correct</p>
+        </div>
+        <button type="button" id="submitBtnsignUp">Register</button>
+        <button type="submit" id="submitBtnLogin">Login</button>
+      </form>
+    </section>
+
+    <section class="signUp-form" id="signUp">
+      <form action=" ">
+        <input
+          type="text"
+          id="newUserFirstName"
+          required
+          placeholder="First Name"
+        />
+        <label for="firstName">First Name</label>
+
+        <input
+          type="text"
+          id="newUserLastName"
+          required
+          placeholder="Last Name"
+        />
+        <label for="lastName">Last Name</label>
+
+        <input
+          type="text"
+          id="newUserUsername"
+          required
+          placeholder="Username"
+        />
+        <label for="username">Username</label>
+
+        <input type="email" id="newUserEmail" required placeholder="Email" />
+        <label for="email">Email</label>
+
+        <input type="tel" id="newUserPhone" required placeholder="Phone" />
+        <label for="phone">Phone</label>
+        <input
+          type="password"
+          id="newUserPassword"
+          required
+          placeholder="Password"
+        />
+        <label for="phone">Password</label>
+        <button type="button" id="backToHome">Login</button>
+        <button type="button" id="signUpNow">Register</button>
+      </form>
+    </section>
+    <header id="eventPage">
+      <nav class="navbar">
+        <div class="navbar__logo">
+          <img src="./img/logo.png" alt="logo" id="homeLogo" />
+        </div>
+        <ul class="navbar__items">
+          <li class="navbar__items--item">
+            <a href="#">Home</a>
+          </li>
+          <li class="navbar__items--item">
+            <a href="#">Some text</a>
+          </li>
+          <li class="navbar__items--item">
+            <a href="#">Some text</a>
+          </li>
+          <li class="navbar__items--item">
+            <a href="#">Some text</a>
+          </li>
+          <li class="navbar__items--item">
+            <a href="#">Some text</a>
+          </li>
+        </ul>
+        <div class="navbar__input">
+          <i class="fas fa-search"></i>
+          <input
+            type="search"
+            name="search"
+            id="searchBtn"
+            placeholder="search"
+          />
+        </div>
+      </nav>
+    </header>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
