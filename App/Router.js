@@ -1,4 +1,5 @@
 import * as VAR from "./Variables.js";
+import { privatePage1Id } from "../app.js";
 
 export const router = () => {
   const hash = location.hash;
@@ -11,7 +12,7 @@ export const router = () => {
       VAR.signInPage.style.display = "none";
       VAR.signUpPage.style.display = "block";
       VAR.eventPage.style.display = "none";
-    } else if (hash.includes("#eventPage")) {
+    } else if (hash.includes(`#${privatePage1Id}`)) {
       VAR.signInPage.style.display = "none";
       VAR.signUpPage.style.display = "none";
       VAR.eventPage.style.display = "block";

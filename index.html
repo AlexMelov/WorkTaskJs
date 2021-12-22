@@ -14,6 +14,7 @@
     />
   </head>
   <body>
+    <!-- Login Page -->
     <section class="signIn-page" id="signIn">
       <form action="#" id="loginPageForm">
         <div>
@@ -42,7 +43,8 @@
         <button type="submit" id="submitBtnLogin">Login</button>
       </form>
     </section>
-
+    <!--  -->
+    <!-- Register Page -->
     <section class="signUp-form" id="signUp">
       <form action=" ">
         <input
@@ -85,39 +87,46 @@
         <button type="button" id="signUpNow">Register</button>
       </form>
     </section>
-    <header id="eventPage">
-      <nav class="navbar">
-        <div class="navbar__logo">
-          <img src="./img/logo.png" alt="logo" id="homeLogo" />
-        </div>
-        <ul class="navbar__items">
-          <li class="navbar__items--item">
-            <a href="#">Home</a>
-          </li>
-          <li class="navbar__items--item">
-            <a href="#">Some text</a>
-          </li>
-          <li class="navbar__items--item">
-            <a href="#">Some text</a>
-          </li>
-          <li class="navbar__items--item">
-            <a href="#">Some text</a>
-          </li>
-          <li class="navbar__items--item">
-            <a href="#">Some text</a>
-          </li>
-        </ul>
-        <div class="navbar__input">
-          <i class="fas fa-search"></i>
-          <input
-            type="search"
-            name="search"
-            id="searchBtn"
-            placeholder="search"
-          />
-        </div>
-      </nav>
-    </header>
+    <!-- Private Page pass protected -->
+    <section class="privatePage1">
+      <header id="eventPage">
+        <nav class="navbar">
+          <div class="navbar__logo">
+            <img src="./img/logo.png" alt="logo" id="homeLogo" />
+          </div>
+          <ul class="navbar__items">
+            <li class="navbar__items--item">
+              <a href="#">Home</a>
+            </li>
+            <li class="navbar__items--item">
+              <a href="#">Some text</a>
+            </li>
+            <li class="navbar__items--item">
+              <a href="#">Some text</a>
+            </li>
+            <li class="navbar__items--item">
+              <a href="#">Some text</a>
+            </li>
+            <li class="navbar__items--item">
+              <a href="#">Some text</a>
+            </li>
+          </ul>
+          <div class="navbar__input">
+            <i class="fas fa-search"></i>
+            <input
+              type="search"
+              name="search"
+              id="searchBtn"
+              placeholder="search"
+            />
+          </div>
+        </nav>
+      </header>
+      <main class="events">
+        <ul class="listOfPosts"></ul>
+      </main>
+    </section>
+    <!--  -->
 
     <script src="app.js" type="module"></script>
   </body>

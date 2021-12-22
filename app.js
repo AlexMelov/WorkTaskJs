@@ -1,9 +1,12 @@
 import * as VAR from "./App/Variables.js";
 import { database } from "./App/Database.js";
 import { router } from "./App/Router.js";
+import { fetchPost, sendHttp } from "./App/EventPage.js";
 
 const storageBase = JSON.parse(localStorage.getItem("array"));
-const isStorage = storageBase !== "" ? storageBase : database;
+const isStorage = storageBase !== null ? storageBase : database;
+console.log(isStorage);
+
 VAR.homeLogo.addEventListener("click", () => {
   VAR.errorUser.style.display = "none";
   VAR.errorPass.style.display = "none";
@@ -22,9 +25,12 @@ VAR.backToHome.addEventListener("click", () => {
   location.hash = "signIn";
   router();
 });
+export let privatePage1Id = "";
+const privatePage1 = document.querySelector(".privatePage1");
 
 function loginFormHandler(e) {
   e.preventDefault();
+
   const passValue = VAR.loginPassInput.value;
   const filterItem = isStorage.filter((item) =>
     item.username === VAR.loginPageUsername.value ? true : false
@@ -38,7 +44,10 @@ function loginFormHandler(e) {
       item.username === VAR.loginPageUsername.value &&
       item.password === passValue
     ) {
-      location.hash = "#eventPage";
+      privatePage1.setAttribute("id", Math.random());
+      privatePage1Id = privatePage1.getAttribute("id");
+
+      location.hash = `#${privatePage1Id}`;
       router();
       loginPagePassword.value = "";
       VAR.loginPageUsername.value = "";
@@ -69,7 +78,9 @@ const addNewUser = () => {
   };
   database.push(newObj);
   localStorage.setItem("array", JSON.stringify(database));
-  location.hash = "#eventPage";
+  privatePage1.setAttribute("id", Math.random());
+  privatePage1Id = privatePage1.getAttribute("id");
+  location.hash = `#${privatePage1Id}`;
   router();
   VAR.newUserFirstName.value = "";
   VAR.newUserLastName.value = "";
@@ -79,4 +90,6 @@ const addNewUser = () => {
   VAR.newUserPassword.value = "";
 };
 VAR.registerUser.addEventListener("click", addNewUser);
+
 router();
+fetchPost();
