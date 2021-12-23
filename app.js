@@ -1,15 +1,13 @@
 import * as VAR from "./App/Variables.js";
 import { database } from "./App/Database.js";
 import { router } from "./App/Router.js";
-import { fetchPost, sendHttp } from "./App/EventPage.js";
+import { fetchPost, tableBody } from "./App/EventPage.js";
 
 const storageBase = JSON.parse(localStorage.getItem("array"));
 const isStorage = storageBase !== null ? storageBase : database;
-console.log(isStorage);
 
-VAR.homeLogo.addEventListener("click", () => {
-  VAR.errorUser.style.display = "none";
-  VAR.errorPass.style.display = "none";
+window.addEventListener("load", () => {
+  eventPage.innerHTML = "";
   location.hash = "";
   router();
 });
@@ -17,12 +15,14 @@ VAR.homeLogo.addEventListener("click", () => {
 VAR.loginForm.addEventListener("submit", loginFormHandler);
 
 VAR.signUpBtn.addEventListener("click", () => {
+  eventPage.innerHTML = "";
   location.href = "#signUp";
   router();
 });
 
 VAR.backToHome.addEventListener("click", () => {
-  location.hash = "signIn";
+  eventPage.innerHTML = "";
+  location.hash = "#signIn";
   router();
 });
 export let privatePage1Id = "";
@@ -46,8 +46,8 @@ function loginFormHandler(e) {
     ) {
       privatePage1.setAttribute("id", Math.random());
       privatePage1Id = privatePage1.getAttribute("id");
-
-      location.hash = `#${privatePage1Id}`;
+      location.hash = `${privatePage1Id}/addNewEvent`;
+      createNavbar();
       router();
       loginPagePassword.value = "";
       VAR.loginPageUsername.value = "";
@@ -80,7 +80,7 @@ const addNewUser = () => {
   localStorage.setItem("array", JSON.stringify(database));
   privatePage1.setAttribute("id", Math.random());
   privatePage1Id = privatePage1.getAttribute("id");
-  location.hash = `#${privatePage1Id}`;
+  location.hash = `#${privatePage1Id}/addNewEvent`;
   router();
   VAR.newUserFirstName.value = "";
   VAR.newUserLastName.value = "";
@@ -89,7 +89,77 @@ const addNewUser = () => {
   VAR.newUserPhone.value = "";
   VAR.newUserPassword.value = "";
 };
+
+const createNavbar = () => {
+  const navbar = document.createElement("nav");
+  navbar.setAttribute("class", "navbar");
+
+  navbar.innerHTML = `
+<nav class="navbar">
+          <div class="navbar__logo">
+            <img src="./img/logo.png" alt="logo" id="homeLogo" />
+          </div>
+          <ul class="navbar__items">
+            <li class="navbar__items--item">
+              <p id="addEventLink">Add New Event</p>
+            </li>
+            <li class="navbar__items--item">
+              <p id="editEventLink">Edit Event</p>
+            </li>
+            <li class="navbar__items--item">
+              <p id="eventListLink">List Event</p>
+            </li>
+          </ul>
+          <div class="navbar__input">
+            <i class="fas fa-search"></i>
+            <input
+              type="search"
+              name="search"
+              id="searchBtn"
+              placeholder="search"
+            />
+          </div>
+        </nav>
+`;
+  VAR.eventPage.appendChild(navbar);
+  const homeLogo = navbar.querySelector("#homeLogo");
+  const editEventLink = navbar.querySelector("#editEventLink");
+  const eventListLink = navbar.querySelector("#eventListLink");
+  const addNewEventLink = navbar.querySelector("#addEventLink");
+
+  homeLogo.addEventListener("click", () => {
+    VAR.errorUser.style.display = "none";
+    VAR.errorPass.style.display = "none";
+    VAR.eventPage.innerHTML = "";
+    location.hash = "";
+    tableBody.innerHTML = "";
+    eventPage.innerHTML = "";
+    router();
+  });
+  editEventLink.addEventListener("click", () => {
+    location.hash = `${privatePage1Id}/editEvent`;
+    tableBody.innerHTML = "";
+    VAR.eventPage.innerHTML = "";
+    createNavbar();
+    router();
+  });
+  eventListLink.addEventListener("click", () => {
+    location.hash = `${privatePage1Id}/eventList`;
+    router();
+    tableBody.innerHTML = "";
+    VAR.eventPage.innerHTML = "";
+    fetchPost();
+    createNavbar();
+  });
+  addNewEventLink.addEventListener("click", () => {
+    location.hash = `${privatePage1Id}/addNewEvent`;
+    tableBody.innerHTML = "";
+    VAR.eventPage.innerHTML = "";
+    router();
+    createNavbar();
+  });
+};
+
 VAR.registerUser.addEventListener("click", addNewUser);
 
 router();
-fetchPost();

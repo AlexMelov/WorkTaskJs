@@ -17,3 +17,6 @@ export const newUserUsername = document.getElementById("newUserUsername");
 export const newUserEmail = document.getElementById("newUserEmail");
 export const newUserPhone = document.getElementById("newUserPhone");
 export const newUserPassword = document.getElementById("newUserPassword");
+export const addNewEventPage = document.querySelector(".addNewEvent");
+export const editEventPage = document.querySelector(".editEvent");
+export const eventList = document.querySelector(".eventList");

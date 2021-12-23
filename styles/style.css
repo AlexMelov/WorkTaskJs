@@ -138,6 +138,12 @@ header {
   display: none;
 }
 
+.postList__item {
+  border: 5px solid black;
+  background-color: #ffedd5;
+  color: #6b6b6b;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

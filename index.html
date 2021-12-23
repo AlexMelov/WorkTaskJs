@@ -90,25 +90,19 @@
     <!-- Private Page pass protected -->
     <section class="privatePage1">
       <header id="eventPage">
-        <nav class="navbar">
+        <!-- <nav class="navbar">
           <div class="navbar__logo">
             <img src="./img/logo.png" alt="logo" id="homeLogo" />
           </div>
           <ul class="navbar__items">
             <li class="navbar__items--item">
-              <a href="#">Home</a>
+              <p id="addEventLink">Add New Event</p>
             </li>
             <li class="navbar__items--item">
-              <a href="#">Some text</a>
+              <p id="editEventLink">Edit Event</p>
             </li>
             <li class="navbar__items--item">
-              <a href="#">Some text</a>
-            </li>
-            <li class="navbar__items--item">
-              <a href="#">Some text</a>
-            </li>
-            <li class="navbar__items--item">
-              <a href="#">Some text</a>
+              <p id="eventListLink">List Event</p>
             </li>
           </ul>
           <div class="navbar__input">
@@ -120,10 +114,52 @@
               placeholder="search"
             />
           </div>
-        </nav>
+        </nav> -->
       </header>
       <main class="events">
-        <ul class="listOfPosts"></ul>
+        <section class="addNewEvent">
+          <h1>Add New Event</h1>
+          <form action="#">
+            <input
+              type="text"
+              name="Name"
+              id="eventName"
+              placeholder="Event Name"
+            />
+            <input
+              type="text"
+              name="date"
+              id="eventDate"
+              placeholder="Event Date"
+            />
+            <input
+              type="text"
+              name="descr"
+              id="eventDescr"
+              placeholder="Event Description"
+            />
+            <input
+              type="button"
+              name="addEvent"
+              id="addNewEvent"
+              value="Add New Event"
+            />
+          </form>
+        </section>
+
+        <section class="editEvent">
+          <!--  -->
+          <h1>This is Edit page</h1>
+        </section>
+
+        <section class="eventList">
+          <table class="postList">
+            <thead class="postList__head">
+              <tr></tr>
+            </thead>
+            <tbody class="postList__body"></tbody>
+          </table>
+        </section>
       </main>
     </section>
     <!--  -->

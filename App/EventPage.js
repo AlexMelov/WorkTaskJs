@@ -1,5 +1,7 @@
-const ul = document.querySelector(".listOfPosts");
-export const sendHttp = (method, url, data) => {
+export const table = document.querySelector(".postList");
+export const tableBody = document.querySelector(".postList__body");
+
+const sendHttp = (method, url, data) => {
   const promise = new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
@@ -25,27 +27,31 @@ export async function fetchPost() {
     "https://jsonplaceholder.typicode.com/users"
   );
   const posts = resData;
-  console.log(posts);
+
   for (let post of posts) {
-    const postItem = document.createElement("li");
-    ul.setAttribute("class", "postList");
-    postItem.setAttribute("class", "postList__item");
-    postItem.setAttribute("id", `${post.id}`);
-    postItem.innerHTML = `
-    <h2>${post.username}</h2>
-    <p>${post.name}</p>
-    <button class="deleteBtn">Button</button>
+    const row = document.createElement("tr");
+    row.setAttribute("class", "postList__item");
+    row.setAttribute("id", `${post.id}`);
+    row.innerHTML = `<td>${post.username}</td>
+    <td>${post.name}</td>
+    <td><button class="deleteBtn">Delete</button></td>
+    <td><button class="editBtn">Edit</button></td>
     `;
-    ul.appendChild(postItem);
+    tableBody.appendChild(row);
     const eventPage = document.querySelector(".privatePage1");
-    eventPage.appendChild(ul);
+    eventPage.appendChild(tableBody);
   }
 }
-
-ul.addEventListener("click", (e) => {
+// Delete row
+tableBody.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
-    const item = e.target.closest("li").id;
-    sendHttp("DELETE", `https://jsonplaceholder.typicode.com/users/${item}`);
-    e.target.closest("li").remove();
+    if (e.target.innerText === "Delete") {
+      const item = e.target.closest("tr").id;
+      sendHttp("DELETE", `https://jsonplaceholder.typicode.com/users/${item}`);
+      e.target.closest("tr").remove();
+    }
+    if (e.target.innerText === "Edit") {
+      console.log("Edit");
+    }
   }
 });
