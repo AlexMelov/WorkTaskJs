@@ -26,6 +26,7 @@ header {
 
     &--item {
       border: 1px solid black;
+      padding: 7px 15px;
       list-style-type: none;
       margin: 0 1%;
       white-space: nowrap;
@@ -38,6 +39,8 @@ header {
       transition: all 0.3s ease;
       &:hover {
         display: block;
+        cursor: pointer;
+
         background-position: 100%;
         transform: translateX(-5px);
         background-image: linear-gradient(
@@ -53,13 +56,11 @@ header {
         transform: translate(-5px, 4px);
       }
 
-      & a {
+      & p {
         transition: all 0.3s ease-in-out;
         text-decoration: none;
         color: rgb(124, 124, 124);
         display: block;
-        padding: 9px 10px;
-        height: 40px;
         &:hover {
           color: white;
         }

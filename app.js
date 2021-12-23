@@ -2,9 +2,17 @@ import * as VAR from "./App/Variables.js";
 import { database } from "./App/Database.js";
 import { router } from "./App/Router.js";
 import { fetchPost, tableBody } from "./App/EventPage.js";
+import { addNewEventHandler } from "./App/AddNewEvent.js";
 
 const storageBase = JSON.parse(localStorage.getItem("array"));
 const isStorage = storageBase !== null ? storageBase : database;
+let APIarray = [];
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then((res) => res.json())
+  .then((users) => {
+    APIarray = users;
+    localStorage.setItem("API", JSON.stringify(APIarray));
+  });
 
 window.addEventListener("load", () => {
   eventPage.innerHTML = "";
@@ -46,9 +54,11 @@ function loginFormHandler(e) {
     ) {
       privatePage1.setAttribute("id", Math.random());
       privatePage1Id = privatePage1.getAttribute("id");
+
       location.hash = `${privatePage1Id}/addNewEvent`;
       createNavbar();
       router();
+
       loginPagePassword.value = "";
       VAR.loginPageUsername.value = "";
     }
@@ -81,6 +91,7 @@ const addNewUser = () => {
   privatePage1.setAttribute("id", Math.random());
   privatePage1Id = privatePage1.getAttribute("id");
   location.hash = `#${privatePage1Id}/addNewEvent`;
+
   router();
   VAR.newUserFirstName.value = "";
   VAR.newUserLastName.value = "";
@@ -95,7 +106,7 @@ const createNavbar = () => {
   navbar.setAttribute("class", "navbar");
 
   navbar.innerHTML = `
-<nav class="navbar">
+
           <div class="navbar__logo">
             <img src="./img/logo.png" alt="logo" id="homeLogo" />
           </div>
@@ -119,7 +130,7 @@ const createNavbar = () => {
               placeholder="search"
             />
           </div>
-        </nav>
+       
 `;
   VAR.eventPage.appendChild(navbar);
   const homeLogo = navbar.querySelector("#homeLogo");
@@ -161,5 +172,5 @@ const createNavbar = () => {
 };
 
 VAR.registerUser.addEventListener("click", addNewUser);
-
+addNewEventHandler();
 router();

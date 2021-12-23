@@ -90,31 +90,7 @@
     <!-- Private Page pass protected -->
     <section class="privatePage1">
       <header id="eventPage">
-        <!-- <nav class="navbar">
-          <div class="navbar__logo">
-            <img src="./img/logo.png" alt="logo" id="homeLogo" />
-          </div>
-          <ul class="navbar__items">
-            <li class="navbar__items--item">
-              <p id="addEventLink">Add New Event</p>
-            </li>
-            <li class="navbar__items--item">
-              <p id="editEventLink">Edit Event</p>
-            </li>
-            <li class="navbar__items--item">
-              <p id="eventListLink">List Event</p>
-            </li>
-          </ul>
-          <div class="navbar__input">
-            <i class="fas fa-search"></i>
-            <input
-              type="search"
-              name="search"
-              id="searchBtn"
-              placeholder="search"
-            />
-          </div>
-        </nav> -->
+        <!-- Navbar -->
       </header>
       <main class="events">
         <section class="addNewEvent">
@@ -123,25 +99,24 @@
             <input
               type="text"
               name="Name"
-              id="eventName"
+              id="eventNameInput"
               placeholder="Event Name"
             />
             <input
-              type="text"
+              type="date"
               name="date"
-              id="eventDate"
+              id="eventDateInput"
               placeholder="Event Date"
+              min="2021-12-23"
+              max="2022-12-23"
             />
-            <input
-              type="text"
-              name="descr"
-              id="eventDescr"
-              placeholder="Event Description"
-            />
+            <textarea name="descr" id="eventDescrInput" cols="30" rows="2">
+            </textarea>
+
             <input
               type="button"
               name="addEvent"
-              id="addNewEvent"
+              id="addNewEventBtn"
               value="Add New Event"
             />
           </form>

@@ -1,5 +1,8 @@
+import { router } from "./Router.js";
+
 export const table = document.querySelector(".postList");
 export const tableBody = document.querySelector(".postList__body");
+let posts = "";
 
 const sendHttp = (method, url, data) => {
   const promise = new Promise((resolve, reject) => {
@@ -26,7 +29,10 @@ export async function fetchPost() {
     "GET",
     "https://jsonplaceholder.typicode.com/users"
   );
-  const posts = resData;
+
+  posts = resData;
+
+  console.log(posts);
 
   for (let post of posts) {
     const row = document.createElement("tr");
@@ -51,7 +57,21 @@ tableBody.addEventListener("click", (e) => {
       e.target.closest("tr").remove();
     }
     if (e.target.innerText === "Edit") {
-      console.log("Edit");
+      const pageLocation = location.href;
+      const pageHash = pageLocation.split("/")[3];
+      location.hash = `${pageHash}/editEvent`;
+      router();
+      tableBody.innerHTML = "";
     }
   }
 });
+
+export function createPost(name, date, description, id) {
+  const post = {
+    id: id,
+    name: name,
+    username: date,
+    email: description,
+  };
+  sendHttp("POST", "https://jsonplaceholder.typicode.com/users", post);
+}

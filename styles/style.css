@@ -44,6 +44,7 @@ header {
 
 .navbar__items--item {
   border: 1px solid black;
+  padding: 7px 15px;
   list-style-type: none;
   margin: 0 1%;
   white-space: nowrap;
@@ -59,6 +60,7 @@ header {
 
 .navbar__items--item:hover {
   display: block;
+  cursor: pointer;
   background-position: 100%;
   -webkit-transform: translateX(-5px);
           transform: translateX(-5px);
@@ -73,17 +75,15 @@ header {
           transform: translate(-5px, 4px);
 }
 
-.navbar__items--item a {
+.navbar__items--item p {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   text-decoration: none;
   color: #7c7c7c;
   display: block;
-  padding: 9px 10px;
-  height: 40px;
 }
 
-.navbar__items--item a:hover {
+.navbar__items--item p:hover {
   color: white;
 }
 

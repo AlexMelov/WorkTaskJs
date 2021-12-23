@@ -20,3 +20,7 @@ export const newUserPassword = document.getElementById("newUserPassword");
 export const addNewEventPage = document.querySelector(".addNewEvent");
 export const editEventPage = document.querySelector(".editEvent");
 export const eventList = document.querySelector(".eventList");
+export const addNewEventBtn = document.getElementById("addNewEventBtn");
+export const addEventNameInput = document.getElementById("eventNameInput");
+export const addEventDateInput = document.getElementById("eventDateInput");
+export const addEventDescInput = document.getElementById("eventDescrInput");
