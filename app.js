@@ -6,13 +6,6 @@ import { addNewEventHandler } from "./App/AddNewEvent.js";
 
 const storageBase = JSON.parse(localStorage.getItem("array"));
 const isStorage = storageBase !== null ? storageBase : database;
-let APIarray = [];
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((res) => res.json())
-  .then((users) => {
-    APIarray = users;
-    localStorage.setItem("API", JSON.stringify(APIarray));
-  });
 
 window.addEventListener("load", () => {
   eventPage.innerHTML = "";
