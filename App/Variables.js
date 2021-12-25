@@ -1,6 +1,7 @@
 export const loginForm = document.getElementById("loginPageForm");
 export const submitBtnLogin = document.getElementById("submitBtnLogin");
 export const loginPageUsername = document.getElementById("loginPageUsername");
+export const privatePage1 = document.querySelector(".privatePage1");
 export const signInPage = document.getElementById("signIn");
 export const signUpPage = document.getElementById("signUp");
 export const signUpBtn = document.getElementById("submitBtnsignUp");
@@ -30,3 +31,7 @@ export const editDesc = document.getElementById("editDescr");
 export const updateBtn = document.getElementById("updateItemBtn");
 export const cancelBtn = document.getElementById("cancelItemBtn");
 export const editItemForm = document.getElementById("editItemForm");
+export const deletePopup = document.querySelector(".popupDelete");
+export const yesDelete = document.querySelector(".yesDelete");
+export const noDelete = document.querySelector(".noDelete");
+export const noMoreEvents = document.querySelector("#noMoreEvents");

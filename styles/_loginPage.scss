@@ -2,3 +2,103 @@
 .errorPassword {
   display: none;
 }
+@mixin input {
+  min-height: 3vh;
+  outline: none;
+  border: none;
+  margin: 5px 0;
+
+  &:focus,
+  &:visited {
+    outline: none;
+    border: none;
+  }
+}
+@mixin button {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: darken($color: rgb(5, 81, 143), $amount: 10);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+@mixin label {
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  font-weight: lighter;
+  margin-left: 10px;
+}
+.signIn-page,
+.signUp-form {
+  position: relative;
+  font-family: sans-serif;
+  background: linear-gradient(to top, rgb(153, 153, 153), rgb(255, 255, 255));
+  height: 100vh;
+  width: 100%;
+}
+#loginPageForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  display: flex;
+  flex-direction: column;
+
+  & input {
+    @include input();
+  }
+  & label {
+    @include label();
+  }
+  & button {
+    @include button();
+    &:first-of-type {
+      position: absolute;
+      top: 120%;
+      left: 0;
+    }
+    &:last-of-type {
+      position: absolute;
+      top: 120%;
+      left: 51%;
+    }
+  }
+}
+
+.signUp-form {
+  & form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    & div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      & input {
+        @include input();
+      }
+      & label {
+        @include label();
+      }
+    }
+    & button {
+      @include button();
+      margin: 20px 20px 0 0;
+    }
+  }
+}

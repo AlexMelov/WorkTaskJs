@@ -115,13 +115,7 @@ const createNavbar = () => {
             </li>
           </ul>
           <div class="navbar__input">
-            <i class="fas fa-search"></i>
-            <input
-              type="search"
-              name="search"
-              id="searchBtn"
-              placeholder="search"
-            />
+           
           </div>
        
 `;
@@ -146,6 +140,17 @@ const createNavbar = () => {
     VAR.eventPage.innerHTML = "";
     createNavbar();
     router();
+    if (
+      VAR.editName.value === "" &&
+      VAR.editDate.value === "" &&
+      VAR.editDesc.value === ""
+    ) {
+      VAR.editName.style.display = "none";
+      VAR.editDate.style.display = "none";
+      VAR.editDesc.style.display = "none";
+      VAR.cancelBtn.style.display = "none";
+      VAR.updateBtn.style.display = "none";
+    }
   });
   eventListLink.addEventListener("click", () => {
     location.hash = `${privatePage1Id}/eventList`;
@@ -164,6 +169,11 @@ const createNavbar = () => {
   });
 };
 
-VAR.registerUser.addEventListener("click", addNewUser);
+VAR.registerUser.addEventListener("click", () => {
+  addNewUser();
+  createNavbar();
+});
 addNewEventHandler();
 router();
+VAR.deletePopup.style.display = "none";
+VAR.noMoreEvents.style.display = "block";

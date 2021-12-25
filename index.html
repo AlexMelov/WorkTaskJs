@@ -40,52 +40,71 @@
             <label for="passwordLoginPage">Password</label>
             <p class="errorPassword">Your password is not correct</p>
           </div>
-          <button type="button" id="submitBtnsignUp">Register</button>
           <button type="submit" id="submitBtnLogin">Login</button>
+          <button type="button" id="submitBtnsignUp">Register</button>
         </form>
       </section>
       <!--  -->
       <!-- Register Page -->
       <section class="signUp-form" id="signUp">
         <form action=" ">
-          <input
-            type="text"
-            id="newUserFirstName"
-            required
-            placeholder="First Name"
-          />
-          <label for="firstName">First Name</label>
+          <div>
+            <div>
+              <input
+                type="text"
+                id="newUserFirstName"
+                required
+                placeholder="First Name"
+              />
+              <label for="firstName">First Name</label>
 
-          <input
-            type="text"
-            id="newUserLastName"
-            required
-            placeholder="Last Name"
-          />
-          <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="newUserLastName"
+                required
+                placeholder="Last Name"
+              />
+              <label for="lastName">Last Name</label>
+            </div>
+            <div>
+              <input
+                type="text"
+                id="newUserUsername"
+                required
+                placeholder="Username"
+              />
+              <label for="username">Username</label>
 
-          <input
-            type="text"
-            id="newUserUsername"
-            required
-            placeholder="Username"
-          />
-          <label for="username">Username</label>
+              <input
+                type="email"
+                id="newUserEmail"
+                required
+                placeholder="Email"
+              />
+              <label for="email">Email</label>
+            </div>
 
-          <input type="email" id="newUserEmail" required placeholder="Email" />
-          <label for="email">Email</label>
-
-          <input type="tel" id="newUserPhone" required placeholder="Phone" />
-          <label for="phone">Phone</label>
-          <input
-            type="password"
-            id="newUserPassword"
-            required
-            placeholder="Password"
-          />
-          <label for="phone">Password</label>
-          <button type="button" id="backToHome">Login</button>
-          <button type="button" id="signUpNow">Register</button>
+            <div>
+              <input
+                type="tel"
+                id="newUserPhone"
+                required
+                placeholder="Phone"
+              />
+              <label for="phone">Phone</label>
+              <input
+                type="password"
+                id="newUserPassword"
+                required
+                placeholder="Password"
+              />
+              <label for="phone">Password</label>
+            </div>
+          </div>
+          <div>
+            <button type="button" id="signUpNow">Register</button>
+            <button type="button" id="backToHome">Login</button>
+          </div>
         </form>
       </section>
       <!-- Private Page pass protected -->
@@ -97,12 +116,14 @@
           <section class="addNewEvent">
             <h1>Add New Event</h1>
             <form action="#">
+              <label for="Name">Your Event Name</label>
               <input
                 type="text"
                 name="Name"
                 id="eventNameInput"
                 placeholder="Event Name"
               />
+              <label for="date">Your Event Date</label>
               <input
                 type="date"
                 name="date"
@@ -111,13 +132,13 @@
                 min="2021-12-23"
                 max="2022-12-23"
               />
+              <label for="textarea">Your Event Description</label>
               <textarea
                 name="description"
                 id="eventDescrInput"
                 cols="30"
                 rows="3"
               ></textarea>
-
               <input
                 type="button"
                 name="addEvent"
@@ -141,7 +162,7 @@
               <button id="updateItemBtn">Update Event</button>
               <button id="cancelItemBtn">Cancel</button>
             </form>
-            <h1>This is Edit page</h1>
+            <h1 id="noMoreEvents">You don't have events for editing! :)</h1>
           </section>
 
           <section class="eventList">
@@ -151,6 +172,13 @@
               </thead>
               <tbody class="postList__body"></tbody>
             </table>
+            <div class="popupDelete">
+              <h3 class="titleDelete">
+                Are you sure you want to delete this event?
+              </h3>
+              <button class="yesDelete">Yes</button>
+              <button class="noDelete">No</button>
+            </div>
           </section>
         </main>
       </section>

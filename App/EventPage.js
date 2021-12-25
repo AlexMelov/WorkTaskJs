@@ -60,17 +60,28 @@ export async function fetchPost() {
   }
 }
 // Delete row
-// Delete row
+
 tableBody.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
     if (e.target.innerText === "Delete") {
       const item = e.target.closest("tr").id;
-      sendHttp("DELETE", `https://jsonplaceholder.typicode.com/users/${item}`);
-      e.target.closest("tr").remove();
-      isStorage = isStorage.filter(
-        (item) => +item.id !== +e.target.closest("tr").id
-      );
-      localStorage.setItem("API", JSON.stringify(isStorage));
+      // popup here
+      VAR.deletePopup.style.display = "block";
+      VAR.yesDelete.addEventListener("click", () => {
+        sendHttp(
+          "DELETE",
+          `https://jsonplaceholder.typicode.com/users/${item}`
+        );
+        e.target.closest("tr").remove();
+        isStorage = isStorage.filter(
+          (item) => +item.id !== +e.target.closest("tr").id
+        );
+        localStorage.setItem("API", JSON.stringify(isStorage));
+        VAR.deletePopup.style.display = "none";
+      });
+      VAR.noDelete.addEventListener("click", () => {
+        VAR.deletePopup.style.display = "none";
+      });
     }
     // Edit row
     if (e.target.innerText === "Edit") {
@@ -90,6 +101,12 @@ tableBody.addEventListener("click", (e) => {
       const item = e.target.closest("tr").id;
       sendHttp("DELETE", `https://jsonplaceholder.typicode.com/users/${item}`);
       e.target.closest("tr").remove();
+      VAR.editName.style.display = "block";
+      VAR.editDate.style.display = "block";
+      VAR.editDesc.style.display = "block";
+      VAR.cancelBtn.style.display = "block";
+      VAR.updateBtn.style.display = "block";
+      VAR.noMoreEvents.style.display = "none";
     }
   }
 });
@@ -108,6 +125,7 @@ VAR.editItemForm.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.tagName === "BUTTON") {
     const clickedItem = JSON.parse(localStorage.getItem("clickedItem"));
+
     if (e.target.innerText === "Update Event") {
       const newEvent = {
         name: VAR.editName.value,
@@ -122,13 +140,36 @@ VAR.editItemForm.addEventListener("click", (e) => {
         newEvent.description,
         newEvent.id
       );
-      isStorage.push(newEvent);
-      localStorage.setItem("API", JSON.stringify(isStorage));
-      VAR.editName.value = "";
-      VAR.editDate.value = "";
-      VAR.editDesc.value = "";
+      if (newEvent.name === "" && newEvent.description === "") {
+        localStorage.setItem("API", JSON.stringify(isStorage));
+        VAR.editName.value = "";
+        VAR.editDate.value = "";
+        VAR.editDesc.value = "";
 
-      localStorage.setItem("API", JSON.stringify(isStorage));
+        localStorage.setItem("API", JSON.stringify(isStorage));
+        localStorage.removeItem("clickedItem");
+        VAR.editName.style.display = "none";
+        VAR.editDate.style.display = "none";
+        VAR.editDesc.style.display = "none";
+        VAR.cancelBtn.style.display = "none";
+        VAR.updateBtn.style.display = "none";
+        VAR.noMoreEvents.style.display = "block";
+      } else {
+        isStorage.push(newEvent);
+        localStorage.setItem("API", JSON.stringify(isStorage));
+        VAR.editName.value = "";
+        VAR.editDate.value = "";
+        VAR.editDesc.value = "";
+
+        localStorage.setItem("API", JSON.stringify(isStorage));
+        localStorage.removeItem("clickedItem");
+        VAR.editName.style.display = "none";
+        VAR.editDate.style.display = "none";
+        VAR.editDesc.style.display = "none";
+        VAR.cancelBtn.style.display = "none";
+        VAR.updateBtn.style.display = "none";
+        VAR.noMoreEvents.style.display = "block";
+      }
     }
     if (e.target.innerText === "Cancel") {
       if (isStorage !== "") {
@@ -138,6 +179,12 @@ VAR.editItemForm.addEventListener("click", (e) => {
         VAR.editDate.value = "";
         VAR.editDesc.value = "";
         location.hash = `${privatePage1Id}/eventList`;
+        VAR.editName.style.display = "none";
+        VAR.editDate.style.display = "none";
+        VAR.editDesc.style.display = "none";
+        VAR.cancelBtn.style.display = "none";
+        VAR.updateBtn.style.display = "none";
+        VAR.noMoreEvents.style.display = "block";
       }
     }
   }

@@ -1,7 +1,60 @@
+@import "loginPage";
+
 .postList {
   &__item {
     border: 5px solid black;
     background-color: rgb(255, 237, 213);
     color: rgb(107, 107, 107);
+  }
+}
+
+.privatePage1 {
+  font-family: sans-serif;
+  height: 100vh;
+  background: linear-gradient(to top, rgb(153, 153, 153), rgb(255, 255, 255));
+  & h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: rgb(211, 211, 211);
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+  .addNewEvent,
+  .editEvent {
+    & form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(30%);
+
+      & input {
+        @include input();
+        width: 300px;
+        margin-bottom: 15px;
+      }
+      & label {
+        @include label();
+        margin-top: 10px;
+      }
+      & textarea {
+        @include label();
+        width: 310px;
+      }
+      & input#addNewEventBtn {
+        @include button();
+        margin-top: 15px;
+      }
+      & button {
+        @include button();
+      }
+    }
+  }
+}
+.editEvent {
+  & form {
+    & button {
+      margin-top: 5px;
+    }
   }
 }
