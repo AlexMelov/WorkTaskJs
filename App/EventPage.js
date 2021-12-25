@@ -1,3 +1,4 @@
+import { privatePage1Id } from "../app.js";
 import { newObjectHandler } from "./AddNewEvent.js";
 import { router } from "./Router.js";
 import * as VAR from "./Variables.js";
@@ -25,6 +26,7 @@ const sendHttp = (method, url, data) => {
   });
   return promise;
 };
+export let isStorage = [];
 
 export async function fetchPost() {
   const resData = await sendHttp(
@@ -33,7 +35,7 @@ export async function fetchPost() {
   );
 
   posts = resData;
-  const isStorage = !localStorage.getItem("API")
+  isStorage = !localStorage.getItem("API")
     ? posts
     : JSON.parse(localStorage.getItem("API"));
 
@@ -58,12 +60,17 @@ export async function fetchPost() {
   }
 }
 // Delete row
+// Delete row
 tableBody.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
     if (e.target.innerText === "Delete") {
       const item = e.target.closest("tr").id;
       sendHttp("DELETE", `https://jsonplaceholder.typicode.com/users/${item}`);
       e.target.closest("tr").remove();
+      isStorage = isStorage.filter(
+        (item) => +item.id !== +e.target.closest("tr").id
+      );
+      localStorage.setItem("API", JSON.stringify(isStorage));
     }
     // Edit row
     if (e.target.innerText === "Edit") {
@@ -72,16 +79,17 @@ tableBody.addEventListener("click", (e) => {
       location.hash = `${pageHash}/editEvent`;
       router();
       tableBody.innerHTML = "";
-      const itemStorage = JSON.parse(localStorage.getItem("API"));
-
-      const findClickedItem = itemStorage.find((item) =>
+      const findClickedItem = isStorage.find((item) =>
         +item.id === +e.target.closest("tr").id ? item : false
       );
       localStorage.setItem("clickedItem", JSON.stringify(findClickedItem));
-
+      isStorage = isStorage.filter((item) => item !== findClickedItem);
       VAR.editName.value = findClickedItem.name;
       VAR.editDate.value = findClickedItem.date;
       VAR.editDesc.value = findClickedItem.description;
+      const item = e.target.closest("tr").id;
+      sendHttp("DELETE", `https://jsonplaceholder.typicode.com/users/${item}`);
+      e.target.closest("tr").remove();
     }
   }
 });
@@ -97,31 +105,40 @@ export function createPost(name, date, description, id) {
 }
 
 VAR.editItemForm.addEventListener("click", (e) => {
-  e.preventDefault;
+  e.preventDefault();
   if (e.target.tagName === "BUTTON") {
+    const clickedItem = JSON.parse(localStorage.getItem("clickedItem"));
     if (e.target.innerText === "Update Event") {
-      const clickedItem = JSON.parse(localStorage.getItem("clickedItem"));
-      const storageArray = JSON.parse(localStorage.getItem("API"));
-      newObjectHandler(
-        VAR.editName.value,
-        VAR.editDate.value,
-        VAR.editDesc.value,
-        clickedItem.id,
-        storageArray
+      const newEvent = {
+        name: VAR.editName.value,
+        date: VAR.editDate.value,
+        description: VAR.editDesc.value,
+        id: clickedItem.id,
+      };
+
+      createPost(
+        newEvent.name,
+        newEvent.date,
+        newEvent.description,
+        newEvent.id
       );
-      const removeClickedItem = storageArray.filter(
-        (item) => !item === clickedItem
-      );
-      localStorage.setItem("API", removeClickedItem);
-    }
-    if (e.target.innerText === "Cancel") {
-      const clickedItem = JSON.parse(localStorage.getItem("clickedItem"));
-      const listItems = JSON.parse(localStorage.getItem("API"));
-      listItems.push(clickedItem);
-      localStorage.removeItem("clickedItem");
+      isStorage.push(newEvent);
+      localStorage.setItem("API", JSON.stringify(isStorage));
       VAR.editName.value = "";
       VAR.editDate.value = "";
       VAR.editDesc.value = "";
+
+      localStorage.setItem("API", JSON.stringify(isStorage));
+    }
+    if (e.target.innerText === "Cancel") {
+      if (isStorage !== "") {
+        isStorage.push(clickedItem);
+        localStorage.removeItem("clickedItem");
+        VAR.editName.value = "";
+        VAR.editDate.value = "";
+        VAR.editDesc.value = "";
+        location.hash = `${privatePage1Id}/eventList`;
+      }
     }
   }
 });
