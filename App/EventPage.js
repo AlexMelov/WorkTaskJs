@@ -50,13 +50,16 @@ export async function fetchPost() {
 
       // const thead = document.createElement("thead");
       // thead.setAttribute("class", "postList__head");
+      let desc = post.description;
+      let descLenght = desc.length;
 
+      const limitedDescr = descLenght >= 25 ? `${desc.slice(0, 25)}...` : desc;
       const row = document.createElement("tr");
       row.setAttribute("class", "postList__item");
       row.setAttribute("id", `${post.id}`);
       row.innerHTML = `
       <td>${post.name}</td>
-      <td>${post.description}</td>
+      <td class="limitDescr">${limitedDescr}</td>
       <td>${itemDate}</td>
       <td><button class="deleteBtn">Delete</button></td>
       <td><button class="editBtn">Edit</button></td>
@@ -198,6 +201,9 @@ const editFormHandler = (e) => {
         VAR.updateBtn.style.display = "none";
         VAR.noMoreEvents.style.display = "block";
       }
+      location.hash = `${privatePage1Id}/eventList`;
+      router();
+      fetchPost();
     }
     if (e.target.innerText === "Cancel") {
       if (isStorage !== "") {
@@ -213,6 +219,9 @@ const editFormHandler = (e) => {
         VAR.cancelBtn.style.display = "none";
         VAR.updateBtn.style.display = "none";
         VAR.noMoreEvents.style.display = "block";
+        location.hash = `${privatePage1Id}/eventList`;
+        router();
+        fetchPost();
       }
     }
   }

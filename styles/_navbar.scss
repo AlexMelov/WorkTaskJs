@@ -15,6 +15,7 @@ header {
     padding: 2rem 1rem;
   }
   .hambLink {
+    text-decoration: none;
     @media (min-width: 801px) {
       display: none;
     }
@@ -26,6 +27,7 @@ header {
     transition: all 0.3s ease;
     color: grey;
     transform: translateY(5px);
+    text-decoration: none;
     &:hover {
       transform: scale(1.02);
     }
@@ -58,6 +60,7 @@ header {
       align-items: flex-start;
       margin-top: 10px;
     }
+
     &--item {
       transform: scale(0);
       opacity: 0;
@@ -69,6 +72,7 @@ header {
         border-radius: 0;
       }
       @media (min-width: 801px) {
+        display: block;
         transform: scale(1);
         opacity: 1;
       }
@@ -103,7 +107,8 @@ header {
         transform: translate(0px, 0px);
       }
 
-      & p {
+      & a {
+        text-decoration: none;
         transition: all 0.3s ease-in-out;
         text-decoration: none;
         color: rgb(124, 124, 124);

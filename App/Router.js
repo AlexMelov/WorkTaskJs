@@ -1,9 +1,10 @@
 import * as VAR from "./Variables.js";
 import { createNavbar, privatePage1Id } from "../app.js";
+import { fetchPost } from "./EventPage.js";
 
 export const privatePage1 = document.querySelector(".privatePage1");
 privatePage1.setAttribute("id", Math.floor(Math.random() * 1000));
-console.log(privatePage1.id);
+
 export const router = () => {
   VAR.addNewEventPage.setAttribute("id", `${privatePage1Id}/addNewEvent`);
   VAR.editEventPage.setAttribute("id", `${privatePage1Id}/editEvent`);
@@ -50,9 +51,9 @@ window.addEventListener("load", () => {
     location.hash = "";
     router();
   } else {
-    location.hash = `#${privatePage1Id}/addNewEvent`;
+    location.hash = `${privatePage1Id}/eventList`;
     router();
     createNavbar();
-    console.log("REloaded", privatePage1Id);
+    fetchPost();
   }
 });

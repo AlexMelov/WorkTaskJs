@@ -10,6 +10,13 @@ addNewEventForm.addEventListener("submit", addNewEventFormHandler);
 export const addNewEventHandler = () => {
   const addNewBtnHandler = () => {
     newObjectHandler();
+    const confirmMessage = document.querySelector(".confirmMessage");
+    confirmMessage.style.opacity = "1";
+    if ((confirmMessage.style.opacity = "1")) {
+      setTimeout(() => {
+        confirmMessage.style.opacity = "0";
+      }, 2000);
+    }
   };
   VAR.addNewEventBtn.removeEventListener("click", addNewBtnHandler);
   VAR.addNewEventBtn.addEventListener("click", addNewBtnHandler);

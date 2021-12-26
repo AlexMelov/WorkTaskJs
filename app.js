@@ -157,24 +157,23 @@ export const createNavbar = () => {
   navbar.setAttribute("class", "navbar");
 
   navbar.innerHTML = `
-          <p class="hambLink"><i class="fas fa-bars"></i></p>
+          <a href="#" class="hambLink"><i class="fas fa-bars"></i></a>
           <div class="navbar__logo">
             <img src="./img/logo.png" alt="logo" id="homeLogo" />
           </div>
           <ul class="navbar__items">
             <li class="navbar__items--item">
-              <p id="addEventLink">Add New Event</p>
+              <a href="#" id="addEventLink">Add New Event</a>
+            </li>
+            
+            <li class="navbar__items--item">
+              <a href="#" id="eventListLink">List Event</a>
             </li>
             <li class="navbar__items--item">
-              <p id="editEventLink">Edit Event</p>
-            </li>
-            <li class="navbar__items--item">
-              <p id="eventListLink">List Event</p>
+            <a href="#" class="logoutBtn">Logout</a>
             </li>
           </ul>
-          <div class="navbar__items--item">
-           <p class="logoutBtn">Logout</p>
-          </div>
+         
        
 `;
   const hambMenu = navbar.querySelector(".hambLink");
@@ -197,44 +196,44 @@ export const createNavbar = () => {
 
   VAR.eventPage.appendChild(navbar);
   const homeLogo = navbar.querySelector("#homeLogo");
-  const editEventLink = navbar.querySelector("#editEventLink");
   const eventListLink = navbar.querySelector("#eventListLink");
   const addNewEventLink = navbar.querySelector("#addEventLink");
+  const editEventLink = navbar.querySelector("#editEventLink");
 
-  homeLogo.removeEventListener("click", eventList);
-  homeLogo.addEventListener("click", eventList);
-
-  const editEventLinkHandler = () => {
-    location.hash = `${privatePage1Id}/editEvent`;
-    tableBody.innerHTML = "";
-    VAR.eventPage.innerHTML = "";
-    createNavbar();
-    router();
-    if (
-      VAR.editName.value === "" &&
-      VAR.editDate.value === "" &&
-      VAR.editDesc.value === ""
-    ) {
-      VAR.editName.style.display = "none";
-      VAR.editDate.style.display = "none";
-      VAR.editDesc.style.display = "none";
-      VAR.cancelBtn.style.display = "none";
-      VAR.updateBtn.style.display = "none";
-    }
-  };
-  editEventLink.removeEventListener("click", editEventLinkHandler);
-  editEventLink.addEventListener("click", editEventLinkHandler);
-
-  eventListLink.removeEventListener("click", eventList);
-  eventListLink.addEventListener("click", eventList);
-  function eventList() {
+  const eventList = () => {
     location.hash = `${privatePage1Id}/eventList`;
     router();
     tableBody.innerHTML = "";
     VAR.eventPage.innerHTML = "";
     fetchPost();
     createNavbar();
-  }
+  };
+  homeLogo.removeEventListener("click", eventList);
+  homeLogo.addEventListener("click", eventList);
+
+  // const editEventLinkHandler = () => {
+  //   location.hash = `${privatePage1Id}/editEvent`;
+  //   tableBody.innerHTML = "";
+  //   VAR.eventPage.innerHTML = "";
+  //   createNavbar();
+  //   router();
+  //   if (
+  //     VAR.editName.value === "" &&
+  //     VAR.editDate.value === "" &&
+  //     VAR.editDesc.value === ""
+  //   ) {
+  //     VAR.editName.style.display = "none";
+  //     VAR.editDate.style.display = "none";
+  //     VAR.editDesc.style.display = "none";
+  //     VAR.cancelBtn.style.display = "none";
+  //     VAR.updateBtn.style.display = "none";
+  //   }
+  // };
+  // editEventLink.removeEventListener("click", editEventLinkHandler);
+  // editEventLink.addEventListener("click", editEventLinkHandler);
+
+  eventListLink.removeEventListener("click", eventList);
+  eventListLink.addEventListener("click", eventList);
 
   const addNewEventLinkHandler = () => {
     location.hash = `${privatePage1Id}/addNewEvent`;

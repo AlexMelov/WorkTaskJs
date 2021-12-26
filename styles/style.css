@@ -33,6 +33,10 @@ header {
   }
 }
 
+.navbar .hambLink {
+  text-decoration: none;
+}
+
 @media (min-width: 801px) {
   .navbar .hambLink {
     display: none;
@@ -48,6 +52,7 @@ header {
   color: grey;
   -webkit-transform: translateY(5px);
           transform: translateY(5px);
+  text-decoration: none;
 }
 
 .navbar .fa-bars:hover {
@@ -141,6 +146,7 @@ header {
 
 @media (min-width: 801px) {
   .navbar__items--item {
+    display: block;
     -webkit-transform: scale(1);
             transform: scale(1);
     opacity: 1;
@@ -164,7 +170,8 @@ header {
           transform: translate(0px, 0px);
 }
 
-.navbar__items--item p {
+.navbar__items--item a {
+  text-decoration: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   text-decoration: none;
@@ -172,7 +179,7 @@ header {
   display: block;
 }
 
-.navbar__items--item p:hover {
+.navbar__items--item a:hover {
   color: white;
 }
 
@@ -462,13 +469,16 @@ header {
 }
 
 .popupDelete div {
+  background: white;
+  padding: 3rem;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  color: white;
+  color: #6b6b6b;
   text-align: center;
+  border-radius: 15px;
 }
 
 .popupDelete div button {
@@ -480,6 +490,8 @@ header {
   font-weight: bold;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  background-color: #bb0000;
+  color: white;
   margin: 10px 5px;
 }
 
@@ -487,6 +499,30 @@ header {
   background-color: #03355e;
   color: #fff;
   cursor: pointer;
+}
+
+.popupDelete div button:last-of-type {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: grey;
+  color: white;
+  margin: 10px 5px;
+}
+
+.popupDelete div button:last-of-type:hover {
+  background-color: #03355e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.eventList {
+  padding: 1rem;
 }
 
 .errorUsername,
@@ -739,13 +775,16 @@ header {
 }
 
 .popupDelete div {
+  background: white;
+  padding: 3rem;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  color: white;
+  color: #6b6b6b;
   text-align: center;
+  border-radius: 15px;
 }
 
 .popupDelete div button {
@@ -757,6 +796,8 @@ header {
   font-weight: bold;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  background-color: #bb0000;
+  color: white;
   margin: 10px 5px;
 }
 
@@ -764,6 +805,30 @@ header {
   background-color: #03355e;
   color: #fff;
   cursor: pointer;
+}
+
+.popupDelete div button:last-of-type {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: grey;
+  color: white;
+  margin: 10px 5px;
+}
+
+.popupDelete div button:last-of-type:hover {
+  background-color: #03355e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.eventList {
+  padding: 1rem;
 }
 
 .postList__item {
@@ -980,6 +1045,14 @@ td {
     border-radius: 0;
     height: 3vh;
   }
+}
+
+.confirmMessage {
+  opacity: 0;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 * {
