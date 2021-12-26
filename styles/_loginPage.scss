@@ -144,6 +144,7 @@
   transform: translateX(-50%);
 }
 .popupDelete {
+  display: none;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;

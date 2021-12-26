@@ -138,7 +138,7 @@ const tableBodyHandler = (e) => {
       VAR.editDesc.style.display = "block";
       VAR.cancelBtn.style.display = "block";
       VAR.updateBtn.style.display = "block";
-      VAR.noMoreEvents.style.display = "none";
+      VAR.noMoreEvents.style.display = "block";
     }
   }
 };

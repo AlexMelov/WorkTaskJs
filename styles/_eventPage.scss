@@ -30,7 +30,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transform: translateY(30%);
+      transform: translateY(10%);
       @media (max-width: 581px) {
         transform: translateY(0%);
       }
@@ -120,4 +120,11 @@ td {
   text-transform: uppercase;
   margin-bottom: 2rem;
   transition: all 0.5s ease;
+}
+.eventListTitle {
+  text-align: center;
+  margin-top: 50px;
+  color: rgb(211, 211, 211);
+  font-size: 3rem;
+  text-transform: uppercase;
 }

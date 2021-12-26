@@ -458,6 +458,7 @@ header {
 }
 
 .popupDelete {
+  display: none;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
@@ -764,6 +765,7 @@ header {
 }
 
 .popupDelete {
+  display: none;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
@@ -874,8 +876,8 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transform: translateY(30%);
-          transform: translateY(30%);
+  -webkit-transform: translateY(10%);
+          transform: translateY(10%);
 }
 
 @media (max-width: 581px) {
@@ -1053,6 +1055,14 @@ td {
   margin-bottom: 2rem;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+.eventListTitle {
+  text-align: center;
+  margin-top: 50px;
+  color: lightgray;
+  font-size: 3rem;
+  text-transform: uppercase;
 }
 
 * {
