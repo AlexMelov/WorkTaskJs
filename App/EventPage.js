@@ -50,12 +50,14 @@ export async function fetchPost() {
 
       // const thead = document.createElement("thead");
       // thead.setAttribute("class", "postList__head");
-      let desc = post.description;
+      let desc = `${post.description}`;
       let descLenght = desc.length;
 
-      console.log(desc, descLenght);
+      // console.log(desc, descLenght);
+      const limitedDescription = desc.slice(0, 25);
 
-      const limitedDescr = descLenght >= 25 ? `${desc.slice(0, 25)}...` : desc;
+      const limitedDescr = descLenght <= 25 ? desc : `${limitedDescription}...`;
+      // let limitedDescr = desc.slice(0, 25) + "...";
 
       const row = document.createElement("tr");
       row.setAttribute("class", "postList__item");
