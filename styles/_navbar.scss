@@ -14,6 +14,11 @@ header {
     align-items: flex-start;
     padding: 2rem 1rem;
   }
+  .hambLink {
+    @media (min-width: 801px) {
+      display: none;
+    }
+  }
   .fa-bars {
     display: none;
     font-size: 2rem;

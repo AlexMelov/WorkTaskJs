@@ -33,6 +33,12 @@ header {
   }
 }
 
+@media (min-width: 801px) {
+  .navbar .hambLink {
+    display: none;
+  }
+}
+
 .navbar .fa-bars {
   display: none;
   font-size: 2rem;
@@ -807,6 +813,14 @@ header {
           transform: translateY(30%);
 }
 
+@media (max-width: 581px) {
+  .privatePage1 .addNewEvent form,
+  .privatePage1 .editEvent form {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
 .privatePage1 .addNewEvent form input,
 .privatePage1 .editEvent form input {
   min-height: 3vh;
@@ -822,6 +836,13 @@ header {
 .privatePage1 .editEvent form input:visited {
   outline: none;
   border: none;
+}
+
+@media (max-width: 581px) {
+  .privatePage1 .addNewEvent form input,
+  .privatePage1 .editEvent form input {
+    height: 4vh;
+  }
 }
 
 .privatePage1 .addNewEvent form label,
@@ -862,6 +883,13 @@ header {
   cursor: pointer;
 }
 
+@media (max-width: 581px) {
+  .privatePage1 .addNewEvent form input#addNewEventBtn,
+  .privatePage1 .editEvent form input#addNewEventBtn {
+    height: 6vh;
+  }
+}
+
 .privatePage1 .addNewEvent form button,
 .privatePage1 .editEvent form button {
   width: 140px;
@@ -872,6 +900,7 @@ header {
   font-weight: bold;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  height: 5vh;
 }
 
 .privatePage1 .addNewEvent form button:hover,
