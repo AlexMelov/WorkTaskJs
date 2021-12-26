@@ -8,9 +8,33 @@ header {
   align-items: center;
   height: 100%;
   padding: 2rem;
-
+  @media (max-width: 800px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+  }
+  .fa-bars {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: grey;
+    transform: translateY(5px);
+    &:hover {
+      transform: scale(1.02);
+    }
+    @media (max-width: 800px) {
+      display: block;
+    }
+  }
   &__logo {
-    width: 3%;
+    width: 30px;
+    @media (max-width: 800px) {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+    }
     & img {
       display: block;
       width: 100%;
@@ -23,8 +47,26 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    @media (max-width: 800px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
     &--item {
+      transform: scale(0);
+      opacity: 0;
+      @media (max-width: 800px) {
+        // display: none;
+        box-shadow: 0;
+        z-index: 111;
+        border: none;
+        border-radius: 0;
+      }
+      @media (min-width: 801px) {
+        transform: scale(1);
+        opacity: 1;
+      }
       border: 1px solid black;
       padding: 7px 15px;
       list-style-type: none;

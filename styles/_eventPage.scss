@@ -9,6 +9,10 @@
 }
 
 .privatePage1 {
+  overflow: hidden;
+  @media (max-width: 800px) {
+    overflow: auto;
+  }
   font-family: sans-serif;
   height: 100vh;
   background: linear-gradient(to top, rgb(153, 153, 153), rgb(255, 255, 255));
@@ -64,6 +68,10 @@ td,
 th {
   border: 1px solid #ddd;
   text-align: left;
+  @media (max-width: 800px) {
+    font-size: 0.8rem;
+    width: auto;
+  }
 }
 
 table {
@@ -75,14 +83,22 @@ table {
 th,
 td {
   padding: 15px;
-  border: 1px solid black;
+  // border: 1px solid black;
   background-color: #fff;
+  @media (max-width: 800px) {
+    padding: 0;
+  }
 }
 .deleteBtn,
 .editBtn {
   @include button();
   box-shadow: 1px 1px 15px rgba($color: #000000, $alpha: 0.3);
   padding: 10px 15px;
-  height: auto;
   width: 100%;
+  height: 100%;
+  @media (max-width: 800px) {
+    padding: 0;
+    border-radius: 0;
+    height: 3vh;
+  }
 }

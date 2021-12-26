@@ -153,7 +153,7 @@ const createNavbar = () => {
   navbar.setAttribute("class", "navbar");
 
   navbar.innerHTML = `
-
+          <p class="hambLink"><i class="fas fa-bars"></i></p>
           <div class="navbar__logo">
             <img src="./img/logo.png" alt="logo" id="homeLogo" />
           </div>
@@ -173,6 +173,24 @@ const createNavbar = () => {
           </div>
        
 `;
+  const hambMenu = navbar.querySelector(".hambLink");
+  const hamburgeMenuhandler = () => {
+    const navItem = document.querySelectorAll(".navbar__items--item");
+    navItem.forEach((item) => {
+      if (item.style.transform === "scale(1)") {
+        // item.style.display = "block";
+        item.style.transform = "scale(0)";
+        item.style.opacity = "0";
+      } else {
+        // item.style.display = "none";
+        item.style.transform = "scale(1)";
+        item.style.opacity = "1";
+      }
+    });
+  };
+
+  hambMenu.addEventListener("click", hamburgeMenuhandler);
+
   VAR.eventPage.appendChild(navbar);
   const homeLogo = navbar.querySelector("#homeLogo");
   const editEventLink = navbar.querySelector("#editEventLink");

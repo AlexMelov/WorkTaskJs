@@ -17,8 +17,54 @@ header {
   padding: 2rem;
 }
 
+@media (max-width: 800px) {
+  .navbar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 2rem 1rem;
+  }
+}
+
+.navbar .fa-bars {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: grey;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+.navbar .fa-bars:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+@media (max-width: 800px) {
+  .navbar .fa-bars {
+    display: block;
+  }
+}
+
 .navbar__logo {
-  width: 3%;
+  width: 30px;
+}
+
+@media (max-width: 800px) {
+  .navbar__logo {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
 }
 
 .navbar__logo img {
@@ -42,7 +88,26 @@ header {
           align-items: center;
 }
 
+@media (max-width: 800px) {
+  .navbar__items {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-top: 10px;
+  }
+}
+
 .navbar__items--item {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
   border: 1px solid black;
   padding: 7px 15px;
   list-style-type: none;
@@ -56,6 +121,24 @@ header {
   background-color: white;
   -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
+}
+
+@media (max-width: 800px) {
+  .navbar__items--item {
+    -webkit-box-shadow: 0;
+            box-shadow: 0;
+    z-index: 111;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 801px) {
+  .navbar__items--item {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .navbar__items--item:hover {
@@ -153,6 +236,13 @@ header {
           flex-direction: column;
 }
 
+@media (max-width: 581px) {
+  #loginPageForm {
+    top: 40%;
+    left: 50%;
+  }
+}
+
 #loginPageForm input {
   min-height: 3vh;
   outline: none;
@@ -170,6 +260,12 @@ header {
   letter-spacing: 2px;
   font-weight: lighter;
   margin-left: 10px;
+}
+
+@media (max-width: 581px) {
+  #loginPageForm label {
+    font-size: 0.8rem;
+  }
 }
 
 #loginPageForm button {
@@ -195,7 +291,20 @@ header {
   cursor: pointer;
 }
 
+@media (max-width: 581px) {
+  #loginPageForm button {
+    width: 170px;
+    font-size: 1rem;
+  }
+}
+
+.signUp-form {
+  overflow: hidden;
+}
+
 .signUp-form form {
+  width: 400px;
+  margin: 0 auto 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -203,17 +312,30 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-30%, -50%);
-          transform: translate(-30%, -50%);
+  -webkit-transform: translate(-40%, -40%);
+          transform: translate(-40%, -40%);
+}
+
+@media (max-width: 581px) {
+  .signUp-form form {
+    width: 200px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    top: 40%;
+  }
 }
 
 .signUp-form form div {
@@ -246,11 +368,23 @@ header {
   border: none;
 }
 
+@media (max-width: 581px) {
+  .signUp-form form div input {
+    height: 4vh;
+  }
+}
+
 .signUp-form form div label {
   font-size: 1.3rem;
   letter-spacing: 2px;
   font-weight: lighter;
   margin-left: 10px;
+}
+
+@media (max-width: 581px) {
+  .signUp-form form div label {
+    font-size: 0.8rem;
+  }
 }
 
 .signUp-form form button {
@@ -280,7 +414,7 @@ header {
           justify-content: center;
   background-color: #dadada;
   padding: 15px;
-  border-radius: 15px;
+  border-radius: 0px 0px 50px 50px;
 }
 
 .menuBar button {
@@ -308,6 +442,45 @@ header {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+.popupDelete {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100vw;
+}
+
+.popupDelete div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.popupDelete div button {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin: 10px 5px;
+}
+
+.popupDelete div button:hover {
+  background-color: #03355e;
+  color: #fff;
+  cursor: pointer;
 }
 
 .errorUsername,
@@ -340,6 +513,13 @@ header {
           flex-direction: column;
 }
 
+@media (max-width: 581px) {
+  #loginPageForm {
+    top: 40%;
+    left: 50%;
+  }
+}
+
 #loginPageForm input {
   min-height: 3vh;
   outline: none;
@@ -357,6 +537,12 @@ header {
   letter-spacing: 2px;
   font-weight: lighter;
   margin-left: 10px;
+}
+
+@media (max-width: 581px) {
+  #loginPageForm label {
+    font-size: 0.8rem;
+  }
 }
 
 #loginPageForm button {
@@ -382,7 +568,20 @@ header {
   cursor: pointer;
 }
 
+@media (max-width: 581px) {
+  #loginPageForm button {
+    width: 170px;
+    font-size: 1rem;
+  }
+}
+
+.signUp-form {
+  overflow: hidden;
+}
+
 .signUp-form form {
+  width: 400px;
+  margin: 0 auto 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -390,17 +589,30 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-30%, -50%);
-          transform: translate(-30%, -50%);
+  -webkit-transform: translate(-40%, -40%);
+          transform: translate(-40%, -40%);
+}
+
+@media (max-width: 581px) {
+  .signUp-form form {
+    width: 200px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    top: 40%;
+  }
 }
 
 .signUp-form form div {
@@ -433,11 +645,23 @@ header {
   border: none;
 }
 
+@media (max-width: 581px) {
+  .signUp-form form div input {
+    height: 4vh;
+  }
+}
+
 .signUp-form form div label {
   font-size: 1.3rem;
   letter-spacing: 2px;
   font-weight: lighter;
   margin-left: 10px;
+}
+
+@media (max-width: 581px) {
+  .signUp-form form div label {
+    font-size: 0.8rem;
+  }
 }
 
 .signUp-form form button {
@@ -467,7 +691,7 @@ header {
           justify-content: center;
   background-color: #dadada;
   padding: 15px;
-  border-radius: 15px;
+  border-radius: 0px 0px 50px 50px;
 }
 
 .menuBar button {
@@ -497,6 +721,45 @@ header {
           transform: translateX(-50%);
 }
 
+.popupDelete {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100vw;
+}
+
+.popupDelete div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.popupDelete div button {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin: 10px 5px;
+}
+
+.popupDelete div button:hover {
+  background-color: #03355e;
+  color: #fff;
+  cursor: pointer;
+}
+
 .postList__item {
   border: 1px solid black;
   background-color: #ffedd5;
@@ -504,10 +767,17 @@ header {
 }
 
 .privatePage1 {
+  overflow: hidden;
   font-family: sans-serif;
   height: 100vh;
   background: -webkit-gradient(linear, left bottom, left top, from(#999999), to(white));
   background: linear-gradient(to top, #999999, white);
+}
+
+@media (max-width: 800px) {
+  .privatePage1 {
+    overflow: auto;
+  }
 }
 
 .privatePage1 h1 {
@@ -622,6 +892,15 @@ th {
   text-align: left;
 }
 
+@media (max-width: 800px) {
+  table,
+  td,
+  th {
+    font-size: 0.8rem;
+    width: auto;
+  }
+}
+
 table {
   margin-top: 2rem;
   border-collapse: collapse;
@@ -631,8 +910,14 @@ table {
 th,
 td {
   padding: 15px;
-  border: 1px solid black;
   background-color: #fff;
+}
+
+@media (max-width: 800px) {
+  th,
+  td {
+    padding: 0;
+  }
 }
 
 .deleteBtn,
@@ -648,8 +933,8 @@ td {
   -webkit-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
   padding: 10px 15px;
-  height: auto;
   width: 100%;
+  height: 100%;
 }
 
 .deleteBtn:hover,
@@ -657,6 +942,15 @@ td {
   background-color: #03355e;
   color: #fff;
   cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .deleteBtn,
+  .editBtn {
+    padding: 0;
+    border-radius: 0;
+    height: 3vh;
+  }
 }
 
 * {
