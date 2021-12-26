@@ -9,12 +9,11 @@
 }
 
 .privatePage1 {
-  overflow: hidden;
   @media (max-width: 800px) {
     overflow: auto;
   }
   font-family: sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to top, rgb(153, 153, 153), rgb(255, 255, 255));
   & h1 {
     text-align: center;
@@ -127,4 +126,9 @@ td {
   color: rgb(211, 211, 211);
   font-size: 3rem;
   text-transform: uppercase;
+}
+.popupErrorAddEvent {
+  // margin-bottom: 3rem;
+  font-size: 0.8rem;
+  font-weight: normal;
 }

@@ -840,9 +840,8 @@ header {
 }
 
 .privatePage1 {
-  overflow: hidden;
   font-family: sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   background: -webkit-gradient(linear, left bottom, left top, from(#999999), to(white));
   background: linear-gradient(to top, #999999, white);
 }
@@ -1063,6 +1062,11 @@ td {
   color: lightgray;
   font-size: 3rem;
   text-transform: uppercase;
+}
+
+.popupErrorAddEvent {
+  font-size: 0.8rem;
+  font-weight: normal;
 }
 
 * {
