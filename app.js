@@ -1,19 +1,19 @@
 import * as VAR from "./App/Variables.js";
 import { database } from "./App/Database.js";
 import { router } from "./App/Router.js";
-import { fetchPost, tableBody } from "./App/EventPage.js";
+import { createPost, fetchPost, tableBody } from "./App/EventPage.js";
 import { addNewEventHandler } from "./App/AddNewEvent.js";
+import { privatePage1 } from "./App/Variables.js";
+
+export let privatePage1Id = "";
+// export const privatePage1 = document.querySelector(".privatePage1");
+// privatePage1.setAttribute("id", Math.floor(Math.random() * 1000));
+
 let isStorage = "";
 setInterval(() => {
   const storageBase = JSON.parse(localStorage.getItem("array"));
   isStorage = storageBase !== null ? storageBase : database;
 }, 1000);
-
-window.addEventListener("load", () => {
-  eventPage.innerHTML = "";
-  location.hash = "";
-  router();
-});
 
 const navMenuStart = document.querySelectorAll(".menuBar");
 // navMenuStart.setAttribute("class", "menuBar");
@@ -55,11 +55,8 @@ backToHome.forEach((item) => {
   item.removeEventListener("click", backToHomeFunc);
   item.addEventListener("click", backToHomeFunc);
 });
-export let privatePage1Id = "";
-const privatePage1 = document.querySelector(".privatePage1");
 
-function loginFormHandler(e) {
-  e.preventDefault();
+const loginHanler = () => {
   VAR.eventPage.innerHTML = "";
   const passValue = VAR.loginPassInput.value;
   const filterItem = isStorage.filter((item) =>
@@ -74,9 +71,10 @@ function loginFormHandler(e) {
       item.username === VAR.loginPageUsername.value &&
       item.password === passValue
     ) {
-      privatePage1.setAttribute("id", Math.floor(Math.random() * 1000));
       privatePage1Id = privatePage1.getAttribute("id");
-
+      // const secureRoute = privatePage1Id;
+      // localStorage.setItem("route", secureRoute);
+      localStorage.setItem("user", JSON.stringify(item));
       location.hash = `${privatePage1Id}/addNewEvent`;
       createNavbar();
       router();
@@ -97,7 +95,13 @@ function loginFormHandler(e) {
     VAR.errorPass.style.display = "block";
     VAR.errorUser.style.display = "block";
   }
+};
+
+function loginFormHandler(e) {
+  e.preventDefault();
+  loginHanler();
 }
+
 const addNewUser = () => {
   const inputs = [
     VAR.newUserFirstName,
@@ -132,7 +136,7 @@ const addNewUser = () => {
       id: Math.floor(Math.random(5000)),
     };
     database.push(newObj);
-    console.log(database);
+    localStorage.setItem("user", JSON.stringify(newObj));
     localStorage.setItem("array", JSON.stringify(database));
     privatePage1.setAttribute("id", Math.floor(Math.random() * 1000));
     privatePage1Id = privatePage1.getAttribute("id");
@@ -148,7 +152,7 @@ const addNewUser = () => {
   }
 };
 
-const createNavbar = () => {
+export const createNavbar = () => {
   const navbar = document.createElement("nav");
   navbar.setAttribute("class", "navbar");
 
@@ -248,6 +252,7 @@ const createNavbar = () => {
     location.hash = "";
     router();
     // location.reload();
+    localStorage.removeItem("user");
   };
 
   logoutBtn.removeEventListener("click", logoutBtnHandler);
