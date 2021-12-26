@@ -53,7 +53,10 @@ export async function fetchPost() {
       let desc = post.description;
       let descLenght = desc.length;
 
+      console.log(desc, descLenght);
+
       const limitedDescr = descLenght >= 25 ? `${desc.slice(0, 25)}...` : desc;
+
       const row = document.createElement("tr");
       row.setAttribute("class", "postList__item");
       row.setAttribute("id", `${post.id}`);
