@@ -15,12 +15,14 @@ const sendHttp = (method, url, data) => {
     xhr.responseType = "json";
 
     xhr.onload = function () {
-      resolve(xhr.response);
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response);
+      } else;
+      reject(new Error("Something went wrong!"));
     };
 
     xhr.onerror = function () {
-      console.log(xhr.response);
-      console.log(xhr.status);
+      reject(new Error("Failerd to send request!"));
     };
     xhr.send(JSON.stringify(data));
   });
@@ -29,45 +31,65 @@ const sendHttp = (method, url, data) => {
 export let isStorage = [];
 
 export async function fetchPost() {
-  const resData = await sendHttp(
-    "GET",
-    "https://jsonplaceholder.typicode.com/users"
-  );
+  try {
+    const resData = await sendHttp(
+      "GET",
+      "https://jsonplaceholder.typicode.com/users"
+    );
 
-  posts = resData;
-  isStorage = !localStorage.getItem("API")
-    ? posts
-    : JSON.parse(localStorage.getItem("API"));
+    posts = resData;
+    isStorage = !localStorage.getItem("API")
+      ? posts
+      : JSON.parse(localStorage.getItem("API"));
 
-  for (let post of isStorage) {
-    const date = new Date(post.date).toLocaleString();
-    const trimedDate = date.split(",");
+    for (let post of isStorage) {
+      const date = new Date(post.date).toLocaleString();
+      const trimedDate = date.split(",");
 
-    const itemDate = trimedDate[0].replaceAll("/", ".");
+      const itemDate = trimedDate[0].replaceAll("/", ".");
 
-    const row = document.createElement("tr");
-    row.setAttribute("class", "postList__item");
-    row.setAttribute("id", `${post.id}`);
-    row.innerHTML = `<td>${post.name}</td>
-    <td>${post.description}</td>
-    <td>${itemDate}</td>
-    <td><button class="deleteBtn">Delete</button></td>
-    <td><button class="editBtn">Edit</button></td>
-    `;
-    tableBody.appendChild(row);
-    const eventPage = document.querySelector(".privatePage1");
-    eventPage.appendChild(tableBody);
+      // const thead = document.createElement("thead");
+      // thead.setAttribute("class", "postList__head");
+
+      const row = document.createElement("tr");
+      row.setAttribute("class", "postList__item");
+      row.setAttribute("id", `${post.id}`);
+      row.innerHTML = `
+      <td>${post.name}</td>
+      <td>${post.description}</td>
+      <td>${itemDate}</td>
+      <td><button class="deleteBtn">Delete</button></td>
+      <td><button class="editBtn">Edit</button></td>
+      `;
+      tableBody.append(row);
+      const table = document.querySelector(".postList");
+      table.innerHTML = `
+      <thead class="postList__head">
+      <tr>
+       <th>Name</th>
+         <th>Description</th>
+         <th>Date</th>
+         <th>Delete Event</th>
+         <th>Edit Event</th>
+       </tr>
+      </thead>
+      `;
+      table.appendChild(tableBody);
+      // const eventPage = document.querySelector(".privatePage1");
+      // table.append(thead, tableBody);
+    }
+  } catch (error) {
+    alert(error.message);
   }
 }
 // Delete row
-
-tableBody.addEventListener("click", (e) => {
+const tableBodyHandler = (e) => {
   if (e.target.tagName === "BUTTON") {
     if (e.target.innerText === "Delete") {
       const item = e.target.closest("tr").id;
       // popup here
       VAR.deletePopup.style.display = "block";
-      VAR.yesDelete.addEventListener("click", () => {
+      const yesDeleteHandler = () => {
         sendHttp(
           "DELETE",
           `https://jsonplaceholder.typicode.com/users/${item}`
@@ -78,10 +100,14 @@ tableBody.addEventListener("click", (e) => {
         );
         localStorage.setItem("API", JSON.stringify(isStorage));
         VAR.deletePopup.style.display = "none";
-      });
-      VAR.noDelete.addEventListener("click", () => {
+      };
+      VAR.yesDelete.removeEventListener("click", yesDeleteHandler);
+      VAR.yesDelete.addEventListener("click", yesDeleteHandler);
+      const noDeleteHandler = () => {
         VAR.deletePopup.style.display = "none";
-      });
+      };
+      VAR.noDelete.removeEventListener("click", noDeleteHandler);
+      VAR.noDelete.addEventListener("click", noDeleteHandler);
     }
     // Edit row
     if (e.target.innerText === "Edit") {
@@ -109,7 +135,9 @@ tableBody.addEventListener("click", (e) => {
       VAR.noMoreEvents.style.display = "none";
     }
   }
-});
+};
+tableBody.removeEventListener("click", tableBodyHandler);
+tableBody.addEventListener("click", tableBodyHandler);
 
 export function createPost(name, date, description, id) {
   const post = {
@@ -121,7 +149,7 @@ export function createPost(name, date, description, id) {
   sendHttp("POST", "https://jsonplaceholder.typicode.com/users", post);
 }
 
-VAR.editItemForm.addEventListener("click", (e) => {
+const editFormHandler = (e) => {
   e.preventDefault();
   if (e.target.tagName === "BUTTON") {
     const clickedItem = JSON.parse(localStorage.getItem("clickedItem"));
@@ -188,4 +216,7 @@ VAR.editItemForm.addEventListener("click", (e) => {
       }
     }
   }
-});
+};
+
+VAR.editItemForm.removeEventListener("click", editFormHandler);
+VAR.editItemForm.addEventListener("click", editFormHandler);

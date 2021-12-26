@@ -17,6 +17,7 @@
     <main class="container">
       <!-- Login Page -->
       <section class="signIn-page" id="signIn">
+        <div class="menuBar"></div>
         <form action="#" id="loginPageForm">
           <div>
             <input
@@ -26,7 +27,7 @@
               placeholder="What's Your Username?"
               required
             />
-            <label for="username">Username</label>
+            <label for="loginPageUsername">Username</label>
             <p class="errorUsername">Your username is not correct</p>
           </div>
           <div>
@@ -37,17 +38,19 @@
               placeholder="Type Your Password Here"
               required
             />
-            <label for="passwordLoginPage">Password</label>
+            <label for="loginPagePassword">Password</label>
             <p class="errorPassword">Your password is not correct</p>
           </div>
           <button type="submit" id="submitBtnLogin">Login</button>
-          <button type="button" id="submitBtnsignUp">Register</button>
+          <!-- <button type="button" id="submitBtnsignUp">Register</button> -->
         </form>
       </section>
       <!--  -->
       <!-- Register Page -->
       <section class="signUp-form" id="signUp">
-        <form action=" ">
+        <div class="popUpBanner"></div>
+        <div class="menuBar"></div>
+        <form action="#" id="signUpForm">
           <div>
             <div>
               <input
@@ -56,7 +59,7 @@
                 required
                 placeholder="First Name"
               />
-              <label for="firstName">First Name</label>
+              <label for="newUserFirstName">First Name</label>
 
               <input
                 type="text"
@@ -64,7 +67,7 @@
                 required
                 placeholder="Last Name"
               />
-              <label for="lastName">Last Name</label>
+              <label for="newUserLastName">Last Name</label>
             </div>
             <div>
               <input
@@ -73,7 +76,7 @@
                 required
                 placeholder="Username"
               />
-              <label for="username">Username</label>
+              <label for="newUserUsername">Username</label>
 
               <input
                 type="email"
@@ -81,7 +84,7 @@
                 required
                 placeholder="Email"
               />
-              <label for="email">Email</label>
+              <label for="newUserEmail">Email</label>
             </div>
 
             <div>
@@ -91,19 +94,18 @@
                 required
                 placeholder="Phone"
               />
-              <label for="phone">Phone</label>
+              <label for="newUserPhone">Phone</label>
               <input
                 type="password"
                 id="newUserPassword"
                 required
                 placeholder="Password"
               />
-              <label for="phone">Password</label>
+              <label for="newUserPassword">Password</label>
             </div>
           </div>
           <div>
-            <button type="button" id="signUpNow">Register</button>
-            <button type="button" id="backToHome">Login</button>
+            <button type="submit" id="signUpNow">Register</button>
           </div>
         </form>
       </section>
@@ -115,15 +117,15 @@
         <main class="events">
           <section class="addNewEvent">
             <h1>Add New Event</h1>
-            <form action="#">
-              <label for="Name">Your Event Name</label>
+            <form action="#" id="addNewEventForm">
+              <label for="addNewEventForm">Your Event Name</label>
               <input
                 type="text"
                 name="Name"
                 id="eventNameInput"
                 placeholder="Event Name"
               />
-              <label for="date">Your Event Date</label>
+              <label for="eventDateInput">Your Event Date</label>
               <input
                 type="date"
                 name="date"
@@ -132,15 +134,16 @@
                 min="2021-12-23"
                 max="2022-12-23"
               />
-              <label for="textarea">Your Event Description</label>
+              <label for="eventDescrInput">Your Event Description</label>
               <textarea
+                style="resize: none"
                 name="description"
                 id="eventDescrInput"
                 cols="30"
                 rows="3"
               ></textarea>
               <input
-                type="button"
+                type="submit"
                 name="addEvent"
                 id="addNewEventBtn"
                 value="Add New Event"
@@ -154,12 +157,13 @@
               <input type="text" name="editName" id="editName" />
               <input type="date" name="editDate" id="editDate" />
               <textarea
+                style="resize: none"
                 name="editDescr"
                 id="editDescr"
                 cols="30"
                 rows="2"
               ></textarea>
-              <button id="updateItemBtn">Update Event</button>
+              <button id="updateItemBtn" type="submit">Update Event</button>
               <button id="cancelItemBtn">Cancel</button>
             </form>
             <h1 id="noMoreEvents">You don't have events for editing! :)</h1>
@@ -167,9 +171,6 @@
 
           <section class="eventList">
             <table class="postList">
-              <thead class="postList__head">
-                <tr></tr>
-              </thead>
               <tbody class="postList__body"></tbody>
             </table>
             <div class="popupDelete">

@@ -1,17 +1,25 @@
 import * as VAR from "./Variables.js";
 import { createPost, isStorage } from "./EventPage.js";
 
+const addNewEventForm = document.getElementById("addNewEventForm");
+const addNewEventFormHandler = (e) => {
+  e.preventDefault();
+};
+addNewEventForm.removeEventListener("submit", addNewEventFormHandler);
+addNewEventForm.addEventListener("submit", addNewEventFormHandler);
 export const addNewEventHandler = () => {
-  VAR.addNewEventBtn.addEventListener("click", () => {
+  const addNewBtnHandler = () => {
     newObjectHandler();
-  });
+  };
+  VAR.addNewEventBtn.removeEventListener("click", addNewBtnHandler);
+  VAR.addNewEventBtn.addEventListener("click", addNewBtnHandler);
 };
 export const newObjectHandler = () => {
   const newEvent = {
     name: VAR.addEventNameInput.value,
     date: VAR.addEventDateInput.value,
     description: VAR.addEventDescInput.value,
-    id: Math.random() * 50000,
+    id: Math.floor(Math.random() * 50000),
   };
 
   createPost(newEvent.name, newEvent.date, newEvent.description, newEvent.id);

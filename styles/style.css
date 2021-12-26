@@ -142,8 +142,8 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -150%);
-          transform: translate(-50%, -150%);
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -181,6 +181,12 @@ header {
   font-weight: bold;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  width: auto;
+  font-size: 1.1rem;
+  height: 4vh;
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin-top: 15px;
 }
 
 #loginPageForm button:hover {
@@ -189,20 +195,7 @@ header {
   cursor: pointer;
 }
 
-#loginPageForm button:first-of-type {
-  position: absolute;
-  top: 120%;
-  left: 0;
-}
-
-#loginPageForm button:last-of-type {
-  position: absolute;
-  top: 120%;
-  left: 51%;
-}
-
 .signUp-form form {
-  width: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -219,8 +212,8 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translate(-30%, -50%);
+          transform: translate(-30%, -50%);
 }
 
 .signUp-form form div {
@@ -276,6 +269,45 @@ header {
   background-color: #03355e;
   color: #fff;
   cursor: pointer;
+}
+
+.menuBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #dadada;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.menuBar button {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin: 0 15px;
+  height: 4vh;
+}
+
+.menuBar button:hover {
+  background-color: #03355e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popUpErrorSignUp {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .errorUsername,
@@ -297,8 +329,8 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -150%);
-          transform: translate(-50%, -150%);
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -336,6 +368,12 @@ header {
   font-weight: bold;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  width: auto;
+  font-size: 1.1rem;
+  height: 4vh;
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin-top: 15px;
 }
 
 #loginPageForm button:hover {
@@ -344,20 +382,7 @@ header {
   cursor: pointer;
 }
 
-#loginPageForm button:first-of-type {
-  position: absolute;
-  top: 120%;
-  left: 0;
-}
-
-#loginPageForm button:last-of-type {
-  position: absolute;
-  top: 120%;
-  left: 51%;
-}
-
 .signUp-form form {
-  width: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -374,8 +399,8 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translate(-30%, -50%);
+          transform: translate(-30%, -50%);
 }
 
 .signUp-form form div {
@@ -433,8 +458,47 @@ header {
   cursor: pointer;
 }
 
+.menuBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #dadada;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.menuBar button {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin: 0 15px;
+  height: 4vh;
+}
+
+.menuBar button:hover {
+  background-color: #03355e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popUpErrorSignUp {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
 .postList__item {
-  border: 5px solid black;
+  border: 1px solid black;
   background-color: #ffedd5;
   color: #6b6b6b;
 }
@@ -549,6 +613,50 @@ header {
 
 .editEvent form button {
   margin-top: 5px;
+}
+
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  margin-top: 2rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 15px;
+  border: 1px solid black;
+  background-color: #fff;
+}
+
+.deleteBtn,
+.editBtn {
+  width: 140px;
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
+  padding: 10px 15px;
+  height: auto;
+  width: 100%;
+}
+
+.deleteBtn:hover,
+.editBtn:hover {
+  background-color: #03355e;
+  color: #fff;
+  cursor: pointer;
 }
 
 * {
