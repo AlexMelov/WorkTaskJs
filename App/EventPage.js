@@ -114,9 +114,7 @@ const tableBodyHandler = (e) => {
     }
     // Edit row
     if (e.target.innerText === "Edit") {
-      const pageLocation = location.href;
-      const pageHash = pageLocation.split("/")[3];
-      location.hash = `${pageHash}/editEvent`;
+      location.hash = `${privatePage1Id}/editEvent`;
       router();
       tableBody.innerHTML = "";
       const findClickedItem = isStorage.find((item) =>
